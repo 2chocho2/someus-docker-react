@@ -39,7 +39,7 @@ const GroupShareList = ({ history, name, match }) => {
 
         let memberId = decode_token.sub;
 
-        axios.get(`http://localhost:8080/api/someus/shareroom/${shareroomid}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/shareroom/${shareroomid}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setList(() => {
@@ -91,7 +91,7 @@ const GroupShareList = ({ history, name, match }) => {
                 return;
             })
 
-        axios.get(`http://localhost:8080/api/someus/shareroom/member/${shareroomid}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/shareroom/member/${shareroomid}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setMemberList(response.data);
@@ -135,7 +135,7 @@ const GroupShareList = ({ history, name, match }) => {
     const handlerChangeDate = (date) => {
         const createdDt = formatDate(date);
         setStartDate(date);
-        axios.get(`http://localhost:8080/api/someus/shareroom/${shareroomid}/${createdDt}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/shareroom/${shareroomid}/${createdDt}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setList(() => {

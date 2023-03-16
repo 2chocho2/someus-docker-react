@@ -7,7 +7,7 @@ const Modal_Mydiary = (props) => {
     const [weather, setWeather] = useState('');
     const [mood, setMood] = useState('');
     const [contents, setContents] = useState('');
-    const image = `http://localhost:8080/api/getImage/` + props.list.diaryImg;
+    const image = `http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/getImage/` + props.list.diaryImg;
 
     const diaryId = props.list.diaryId;
 
@@ -34,20 +34,20 @@ const Modal_Mydiary = (props) => {
 
     // moodId에 따라 moodImg 설정
     const moodImg = (mood) => {
-        if (mood == 1) { return <img className="mood_detail" src={`/img/moodC_1.png`} /> }
-        else if (mood == 2) { return <img className="mood_detail" src={`/img/moodC_2.png`} /> }
-        else if (mood == 3) { return <img className="mood_detail" src={`/img/moodC_3.png`} /> }
-        else if (mood == 4) { return <img className="mood_detail" src={`/img/moodC_4.png`} /> }
-        else if (mood == 5) { return <img className="mood_detail" src={`/img/moodC_5.png`} /> }
+        if (mood == 1) { return <img className="mood_detail" src={`../img/moodC_1.png`} /> }
+        else if (mood == 2) { return <img className="mood_detail" src={`../img/moodC_2.png`} /> }
+        else if (mood == 3) { return <img className="mood_detail" src={`../img/moodC_3.png`} /> }
+        else if (mood == 4) { return <img className="mood_detail" src={`../img/moodC_4.png`} /> }
+        else if (mood == 5) { return <img className="mood_detail" src={`../img/moodC_5.png`} /> }
     };
 
     // weatherId에 따라 weatherImg 설정
     const weatherImg = (weather) => {
-        if (weather == 1) { return <img className="weather_detail" src={`/img/weather_1.png`} /> }
-        else if (weather == 2) { return <img className="weather_detail" src={`/img/weather_2.png`} /> }
-        else if (weather == 3) { return <img className="weather_detail" src={`/img/weather_3.png`} /> }
-        else if (weather == 4) { return <img className="weather_detail" src={`/img/weather_4.png`} /> }
-        else if (weather == 5) { return <img className="weather_detail" src={`/img/weather_5.png`} /> }
+        if (weather == 1) { return <img className="weather_detail" src={`../img/weather_1.png`} /> }
+        else if (weather == 2) { return <img className="weather_detail" src={`../img/weather_2.png`} /> }
+        else if (weather == 3) { return <img className="weather_detail" src={`../img/weather_3.png`} /> }
+        else if (weather == 4) { return <img className="weather_detail" src={`../img/weather_4.png`} /> }
+        else if (weather == 5) { return <img className="weather_detail" src={`../img/weather_5.png`} /> }
     };
 
     const hanlderChangeContents = (e) => {
@@ -56,7 +56,7 @@ const Modal_Mydiary = (props) => {
 
     // 내용 수정 이벤트 핸들러
     const handlerOnClickUpdate = () => {
-        axios.put(`http://localhost:8080/api/someus/private/${diaryId}`,
+        axios.put(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/${diaryId}`,
             { "diaryContent": contents },
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
@@ -78,7 +78,7 @@ const Modal_Mydiary = (props) => {
 
     // 일기 삭제 이벤트 핸들러
     const handlerOnClickDelete = () => {
-        axios.delete(`http://localhost:8080/api/someus/private/${diaryId}`,
+        axios.delete(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/${diaryId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 if (response.data === 1) {

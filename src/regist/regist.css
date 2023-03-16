@@ -27,7 +27,6 @@
 
 /* 로고 */
 .registLogo {
-  /* background-color: pink; */
   width: 500px;
   height: 600px;
   background-image: url('../img/logo_black.png');
@@ -39,7 +38,6 @@
 
 /* 입력창 */
 .registPage .registInput {
-  /* background-color: skyblue; */
   width: 500px;
   height: 600px;
   padding: 0px 100px 0px 20px;
@@ -53,16 +51,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-/* .registForm input {
-  font-family: 'Noto Sans KR', 'Noto Sans Korean', "Nanum Gothic", sans-serif !important;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  border: 0;
-  outline: none;
-  font-size: 10px;
-} */
 
 /* box1 */
 .registInputBox1,

@@ -23,7 +23,7 @@ const Loginpage = ({ history }) => {
 
     const handlerSubmit = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8080/login`,
+        axios.post(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/login`,
             { "memberId": id, "memberPw": pw })
             .then((response) => {
                 if (response.data) {

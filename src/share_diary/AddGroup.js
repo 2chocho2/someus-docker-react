@@ -2,8 +2,6 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useState, useRef, useEffect } from "react";
 import './addgroup.css';
-import AddGroupNext from "./AddGroupNext";
-import NaviDiary from "../navigation/NaviDiary";
 
 const AddGroup = (props) => {
     
@@ -30,7 +28,7 @@ const AddGroup = (props) => {
         const token = sessionStorage.getItem('token');
         const decode_token = jwt_decode(token);
 
-        axios.post(`http://localhost:8080/api/someus/addgroup`,
+        axios.post(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/addgroup`,
             { "shareRoomName": shareRoomName,
               "memberId": decode_token.sub },
               { headers: { 'Authorization' : `Bearer ${ sessionStorage.getItem('token') }`}}

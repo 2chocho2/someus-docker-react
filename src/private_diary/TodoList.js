@@ -10,13 +10,12 @@ const TodoList = (props) => {
 
     // 체크박스를 누를 때 마다 바뀔 이미지 3개, images[인덱스번호]를 통해 사용
     const images = [
-        '/img/todo_null.png',
-        '/img/todo_ing.png',
-        '/img/todo_ok.png'
+        '../img/todo_null.png',
+        '../img/todo_ing.png',
+        '../img/todo_ok.png'
     ];
 
     //{ 핸들러 } todolist의 input 텍스트 업데이트 해주는 핸들러
-    //필요한 핸들러인지는 모르겠음 삭제가 가능하다면 삭제 필요(왜? onBlur와 중복되는 기능 같음)
     //onChange 이벤트 사용 (id: goalId, e: e.target.value)
     function handlerChange(id, e) {
         props.setTodos(prevState => {
@@ -28,7 +27,6 @@ const TodoList = (props) => {
     };
 
     //{ 핸들러 }포커스 아웃 되면 put으로 입력되게 updateGoal api요청 필요
-    //포커스 아웃은 onBlur 이벤트를 사용 (id: goalId, e: e.target.value)
     const handlerInputFocusOut = (id, e) => {
 
         //Todos 내용 중에 받아온 id와 일치하는 goal객체를 수정 반영
@@ -58,7 +56,7 @@ const TodoList = (props) => {
             };
 
             //서버에 put으로 수정 요청
-            axios.put(`http://localhost:8080/api/someus/private/list/goal/${id}`, data,
+            axios.put(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/list/goal/${id}`, data,
                 {
                     headers: header
                 }).then(response => {
@@ -77,7 +75,7 @@ const TodoList = (props) => {
     //{ 핸들러 } 삭제 이미지(지우개) 누르면 해당 목표 삭제 (작업완료)
     const handlerClickEraser = (id) => {
         //id값을 기준으로 서버에 delete 요청
-        axios.delete(`http://localhost:8080/api/someus/private/list/goal/${id}`,
+        axios.delete(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/list/goal/${id}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` },  })
             .then(response => {
                 if (response.data === 1) {
@@ -117,7 +115,7 @@ const TodoList = (props) => {
                 'Content-Type': 'application/json'
             };
             //서버에 put으로 수정 요청
-            axios.put(`http://localhost:8080/api/someus/private/list/goal/${id}`, data,
+            axios.put(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/list/goal/${id}`, data,
                 {
                     headers: header
                 }).then(response => {
@@ -157,15 +155,13 @@ const TodoList = (props) => {
         };
 
         //서버에 post로 입력 요청
-        axios.post(`http://localhost:8080/api/someus/private/list/goal`, data,
+        axios.post(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/list/goal`, data,
             {
                 headers: header
             }).then(response => {
                 if (response.data === 1) {
                     console.log('추가완료');
-                    //추가하고 추가된 상태로 select 다시 해옴.
                     props.getTodos(newStartDate);
-                    console.log(newStartDate);
                 } else {
                     console.log('추가실패');
                     return;

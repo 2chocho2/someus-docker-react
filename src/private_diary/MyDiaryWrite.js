@@ -23,7 +23,7 @@ const MyDiaryWrite = ({ history }) => {
         const token = sessionStorage.getItem('token');
         const decode_token = jwt_decode(token);
 
-        axios.get(`http://localhost:8080/api/someus/private/write`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/write`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setWeather(response.data.weatherList);
@@ -154,7 +154,7 @@ const MyDiaryWrite = ({ history }) => {
 
         axios({
             method: 'post',
-            url: `http://localhost:8080/api/someus/private/write`,
+            url: `http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/write`,
             data: formData,
             headers: {
                 "Content-Type": `multipart/form-data; `,

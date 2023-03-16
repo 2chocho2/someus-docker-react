@@ -2,7 +2,7 @@ import './mydiaryeach.css'
 
 const MyDiaryEach = ({ list }) => {
 
-    const image = `http://localhost:8080/api/getImage/` + list.diaryImg;
+    const image = `http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/getImage/` + list.diaryImg;
 
     return (
         <div className='eachdiary' >

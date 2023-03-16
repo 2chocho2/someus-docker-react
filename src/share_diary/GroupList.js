@@ -24,7 +24,7 @@ const GroupList = ({ history, match }) => {
         const decode_token = jwt_decode(token);
         setMemberId(decode_token.sub);
         let memberId = decode_token.sub;
-        axios.get(`http://localhost:8080/api/someus/share/grouplist/${memberId}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/share/grouplist/${memberId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then(response => {
                 setGroupList(response.data);

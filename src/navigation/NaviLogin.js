@@ -1,8 +1,8 @@
 import './navi.css'
-import logo from 'C:/javascript/someus-app/src/img/logo_main.png'
-import mypage from 'C:/javascript/someus-app/src/img/navicon_my.png'
-import howTo from 'C:/javascript/someus-app/src/img/navicon_howTo.png'
-import logout from 'C:/javascript/someus-app/src/img/navicon_logout.png'
+import logo from '../img/logo_main.png'
+import mypage from '../img/navicon_my.png'
+import howTo from '../img/navicon_howTo.png'
+import logout from '../img/navicon_logout.png'
 
 const NaviLogin = ({ name,
                     handlerClickHome,

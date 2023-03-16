@@ -30,7 +30,7 @@ const MyDiaryList = ({ match, history }) => {
         let memberId = decode_token.sub;
         const today = formatDate(new Date());
 
-        axios.get(`http://localhost:8080/api/someus/private/page/${memberId}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/page/${memberId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setList(response.data.diaryList);
@@ -55,7 +55,7 @@ const MyDiaryList = ({ match, history }) => {
         const decode_token = jwt_decode(token);
 
         try {
-            const response = await axios.get(`http://localhost:8080/api/someus/private/list/goal/${decode_token.sub}/${createdDt}`,
+            const response = await axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/list/goal/${decode_token.sub}/${createdDt}`,
                 { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } });
             setTodos(response.data);
         } catch (error) {
@@ -103,7 +103,7 @@ const MyDiaryList = ({ match, history }) => {
         const createdDt = formatDate(date);
         setStartDate(date);
 
-        axios.get(`http://localhost:8080/api/someus/private/page/${memberId}/${createdDt}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/private/page/${memberId}/${createdDt}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 console.log(response);

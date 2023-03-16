@@ -1,6 +1,6 @@
-import mypage from 'C:/Javascript/someus-app/src/img/navicon_my.png'
-import logout from 'C:/Javascript/someus-app/src/img/navicon_logout.png'
-import home from 'C:/Javascript/someus-app/src/img/navicon_home.png'
+import mypage from '../img/navicon_my.png'
+import logout from '../img/navicon_logout.png'
+import home from '../img/navicon_home.png'
 import './navi.css'
 import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";

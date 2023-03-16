@@ -23,7 +23,7 @@ const GroupDiaryWrite = ({ history, match }) => {
         const token = sessionStorage.getItem('token');
         const decode_token = jwt_decode(token);
 
-        axios.get(`http://localhost:8080/api/someus/share/${shareroomid}/write`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/share/${shareroomid}/write`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setWeather(response.data.weatherList);
@@ -152,7 +152,7 @@ const GroupDiaryWrite = ({ history, match }) => {
 
         axios({
             method: 'post',
-            url: `http://localhost:8080/api/someus/share/${shareroomid}/write`,
+            url: `http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/share/${shareroomid}/write`,
             data: formData,
             headers: {
                 "Content-Type": `multipart/form-data; `,

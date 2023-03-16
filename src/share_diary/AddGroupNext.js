@@ -18,7 +18,7 @@ const AddGroupNext = (props) => {
 
         let memberId = decode_token.sub;
 
-        axios.get(`http://localhost:8080/api/someus/addgroup/${memberId}`,
+        axios.get(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/addgroup/${memberId}`,
             { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` } })
             .then((response) => {
                 setShareRoomId(response.data);
@@ -30,7 +30,7 @@ const AddGroupNext = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8080/api/someus/addgroupnext`,
+        axios.post(`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/someus/addgroupnext`,
             [{
                 "shareRoomId": shareRoomId,
                 "memberId": memberId

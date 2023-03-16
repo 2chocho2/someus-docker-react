@@ -1,4 +1,4 @@
-import groupdiaryimg from 'C:/javascript/someus-app/src/img/groupD_1.png';
+import groupdiaryimg from '../img/groupD_1.png';
 import './groupshareEach.css';
 
 const GroupShareEach = ({ list, history }) => {

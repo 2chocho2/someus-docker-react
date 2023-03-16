@@ -25,20 +25,20 @@ const Modal_GroupR = (props) => {
 
     // moodId에 따라 moodImg 설정
     const moodImg = (mood) => {
-        if (mood == 1) { return <img className="groupR_mood" src={`/img/moodC_1.png`} /> }
-        else if (mood == 2) { return <img className="groupR_mood" src={`/img/moodC_2.png`} /> }
-        else if (mood == 3) { return <img className="groupR_mood" src={`/img/moodC_3.png`} /> }
-        else if (mood == 4) { return <img className="groupR_mood" src={`/img/moodC_4.png`} /> }
-        else if (mood == 5) { return <img className="groupR_mood" src={`/img/moodC_5.png`} /> }
+        if (mood == 1) { return <img className="groupR_mood" src={`../img/moodC_1.png`} /> }
+        else if (mood == 2) { return <img className="groupR_mood" src={`../img/moodC_2.png`} /> }
+        else if (mood == 3) { return <img className="groupR_mood" src={`../img/moodC_3.png`} /> }
+        else if (mood == 4) { return <img className="groupR_mood" src={`../img/moodC_4.png`} /> }
+        else if (mood == 5) { return <img className="groupR_mood" src={`../img/moodC_5.png`} /> }
     };
 
     // weatherId에 따라 weatherImg 설정
     const weatherImg = (weather) => {
-        if (weather == 1) { return <img className="groupR_weather" src={`/img/weather_1.png`} /> }
-        else if (weather == 2) { return <img className="groupR_weather" src={`/img/weather_2.png`} /> }
-        else if (weather == 3) { return <img className="groupR_weather" src={`/img/weather_3.png`} /> }
-        else if (weather == 4) { return <img className="groupR_weather" src={`/img/weather_4.png`} /> }
-        else if (weather == 5) { return <img className="groupR_weather" src={`/img/weather_5.png`} /> }
+        if (weather == 1) { return <img className="groupR_weather" src={`../img/weather_1.png`} /> }
+        else if (weather == 2) { return <img className="groupR_weather" src={`../img/weather_2.png`} /> }
+        else if (weather == 3) { return <img className="groupR_weather" src={`../img/weather_3.png`} /> }
+        else if (weather == 4) { return <img className="groupR_weather" src={`../img/weather_4.png`} /> }
+        else if (weather == 5) { return <img className="groupR_weather" src={`../img/weather_5.png`} /> }
     };
 
 
@@ -46,7 +46,7 @@ const Modal_GroupR = (props) => {
         <>
             <div className="groupR_modal">
                 <div className="groupR_modalImgbox">
-                    <img className="groupR_modalImg" src={props.diaryDetailInfo ? `http://localhost:8080/api/getImage/` + props.diaryDetailInfo.diary_img : ''} />
+                    <img className="groupR_modalImg" src={props.diaryDetailInfo ? `http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}/api/getImage/` + props.diaryDetailInfo.diary_img : ''} />
                 </div>
                 <div className="groupL_write">
                     <div className="groupR_modalHeader">
