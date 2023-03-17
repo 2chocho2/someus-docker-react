@@ -7,7 +7,7 @@ RUN     apk update && apk add git && git clone $GIT_REPOSITORY_ADDRESS
 FROM    node AS builder
 RUN     mkdir /my-app
 WORKDIR /my-app
-COPY    --from=init /my-app/someus-react .
+COPY    --from=init /my-app/someus-docker-react .
 ARG     REST_API_SERVER_IP
 ARG     REST_API_SERVER_PORT
 RUN     echo REACT_APP_IP=$REST_API_SERVER_IP > .env
